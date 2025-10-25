@@ -3,7 +3,7 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 10/09/2025 09:46:32 AM
+// Create Date: 9/2/2025 07:12:36 PM
 // Design Name: 
 // Module Name: sbox
 // Project Name: 
@@ -20,12 +20,13 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module sbox(a, c);
+module sbox(a,c);
 
 input  [7:0] a; 
 output [7:0] c;
     
 reg [7:0] c;
+    
     
    always @(a)
     case (a)
@@ -286,6 +287,5 @@ reg [7:0] c;
 	   8'hfe: c=8'hbb;
 	   8'hff: c=8'h16;
 	endcase
-	
-	
+
 endmodule
