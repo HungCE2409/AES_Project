@@ -21,19 +21,30 @@
 
 
 module keyExpansion_tb;
-    reg [0:127] k1;
+    reg [127:0] k1;
     wire[1407:0] out1;
     
-    reg [0:191] k2;
+    reg [191:0] k2;
     wire[1663:0] out2;
     
+    reg [255:0] k2;
+    wire[1919:0] out2;
+
     keyExpansion ks(k1,out1);
     keyExpansion #(6,12) ks2(k2,out2);
-    
+    keyExpansion #(8,14) ks2(k2,out2);
+
     initial begin
-    //$monitor("k= %h , out= %h",k,out);
-    //k=128'h_2b7e1516_28aed2a6_abf71588_09cf4f3c;
+    $monitor("k128= %h , out128= %h",k,out);
+    k1=128'h2b7e1516_28aed2a6_abf71588_09cf4f3c;
+    #10;
+
     $monitor("k192= %h , out192= %h",k2,out2);
     k2=192'h00010203_04050607_08090a0b_0c0d0e0f_10111213_14151617;
+    #10 $finish;
+
+    $monitor("k256= %h , out256= %h",k3,out3);
+    k3=256'h00010203_04050607_08090a0b_0c0d0e0f_10111213_14151617_18191a1b_1c1d1e1f;
+    #10 $finish;
     end
 endmodule
